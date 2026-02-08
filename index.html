@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irefurb - Expert Display Repair Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Poppins', 'Montserrat', system-ui, sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-primary {
+            background: #10b981;
+            color: white;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            padding: 12px 24px;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 20px 35px -5px rgba(16, 185, 129, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #475569;
+            color: white;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            padding: 12px 24px;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+        }
+        
+        .btn-secondary:hover {
+            background: #334155;
+            transform: translateY(-2px);
+        }
+        
+        .input-field {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid #475569;
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+        
+        .dropdown {
+            background: #1e293b;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dropdown-item:hover {
+            background: #334155;
+        }
+        
+        /* Pop-up animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+<body class="min-h-screen gradient-bg">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 glass-effect">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <!-- Logo placeholder - replace with actual logo -->
+                    <img 
+                        src="Logo.png" 
+                        alt="Irefurb Logo" 
+                        class="h-12 w-auto"
+                        onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')"
+                    />
+                    <div class="hidden">
+                        <i class="fas fa-wrench text-emerald-500 text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold text-white">Irefurb Chennai</span>
+                        <p class="text-xs text-slate-400 hidden sm:block">smartphone display repair services</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-slate-300 hover:text-emerald-400 transition-colors">Home</a>
+                    <a href="#repair-form" class="text-slate-300 hover:text-emerald-400 transition-colors">Repair Form</a>
+                    <a href="#reviews" class="text-slate-300 hover:text-emerald-400 transition-colors">Reviews</a>
+                    <a href="#why-choose-us" class="text-slate-300 hover:text-emerald-400 transition-colors">Why Choose Us</a>
+                    <a href="#contact" class="text-slate-300 hover:text-emerald-400 transition-colors">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="#home" class="block text-slate-300 hover:text-emerald-400 transition-colors py-2">Home</a>
+                <a href="#repair-form" class="block text-slate-300 hover:text-emerald-400 transition-colors py-2">Repair Form</a>
+                <a href="#reviews" class="block text-slate-300 hover:text-emerald-400 transition-colors py-2">Reviews</a>
+                <a href="#why-choose-us" class="block text-slate-300 hover:text-emerald-400 transition-colors py-2">Why Choose Us</a>
+                <a href="#contact" class="block text-slate-300 hover:text-emerald-400 transition-colors py-2">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="container mx-auto px-4 py-16 md:py-24">
+        <div class="text-center mb-12">
+            <!-- Logo and Brand Name -->
+            <div class="flex flex-col items-center mb-8">
+                <img 
+                    src="Logo.png" 
+                    alt="Irefurb Logo" 
+                    class="h-48 w-auto mb-6"
+                    onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')"
+                />
+                <div class="hidden">
+                    <i class="fas fa-wrench text-emerald-500 text-8xl"></i>
+                </div>
+                <div class="text-center space-y-2">
+                    <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tight">Irefurb Chennai</h1>
+                    <h2 class="text-3xl md:text-4xl text-emerald-400 tracking-wide">Expert Display Repair</h2>
+                    <h3 class="text-xl md:text-2xl text-white tracking-wide">for Your Mobile & Tablet</h3>
+                </div>
+            </div>
+            
+            <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+                Professional repair services with quality parts and fast turnaround. Get your device fixed right the first time.
+            </p>
+            <a 
+                href="#repair-form" 
+                class="inline-flex items-center btn-primary text-lg"
+            >
+                Get Your Repair Quote
+                <i class="fas fa-chevron-down ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Repair Form Section -->
+    <section id="repair-form" class="container mx-auto px-4 py-16">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Repair Inquiry Form</h2>
+                <p class="text-slate-300">
+                    Tell us about your device and we'll provide a quick quote
+                </p>
+            </div>
+
+            <div class="glass-effect rounded-2xl p-8">
+                <div class="space-y-6">
+                    <!-- Brand Selection -->
+                    <div>
+                        <label class="block text-white font-medium mb-2">Select Brand</label>
+                        <div class="relative">
+                            <button
+                                onclick="toggleBrandDropdown()"
+                                class="input-field w-full flex items-center justify-between"
+                            >
+                                <span id="selectedBrandText" class="text-slate-400">
+                                    Choose your brand
+                                </span>
+                                <i class="fas fa-chevron-down text-slate-400"></i>
+                            </button>
+                            
+                            <div id="brandDropdown" class="hidden absolute z-10 w-full mt-2 dropdown max-h-60 overflow-y-auto">
+                                <button onclick="selectBrand('Apple')" class="w-full px-4 py-3 text-left text-white dropdown-item">Apple</button>
+                                <button onclick="selectBrand('Samsung')" class="w-full px-4 py-3 text-left text-white dropdown-item">Samsung</button>
+                                <button onclick="selectBrand('OnePlus')" class="w-full px-4 py-3 text-left text-white dropdown-item">OnePlus</button>
+                                <button onclick="selectBrand('Google')" class="w-full px-4 py-3 text-left text-white dropdown-item">Google</button>
+                                <button onclick="selectBrand('Xiaomi')" class="w-full px-4 py-3 text-left text-white dropdown-item">Xiaomi</button>
+                                <button onclick="selectBrand('iPad')" class="w-full px-4 py-3 text-left text-white dropdown-item">iPad</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Model Selection -->
+                    <div>
+                        <label class="block text-white font-medium mb-2">Select Model</label>
+                        <div class="relative">
+                            <button
+                                onclick="toggleModelDropdown()"
+                                id="modelButton"
+                                class="input-field w-full flex items-center justify-between opacity-50"
+                                disabled
+                            >
+                                <span id="selectedModelText" class="text-slate-400">
+                                    Choose your model
+                                </span>
+                                <i class="fas fa-chevron-down text-slate-400"></i>
+                            </button>
+                            
+                            <div id="modelDropdown" class="hidden absolute z-10 w-full mt-2 dropdown max-h-60 overflow-y-auto">
+                                <!-- Models will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Issue Description -->
+                    <div>
+                        <label class="block text-white font-medium mb-2">Describe your issue</label>
+                        <textarea
+                            id="issueDescription"
+                            placeholder="Please describe exactly what is wrong with your display..."
+                            class="input-field w-full min-h-[120px] resize-none"
+                            rows="4"
+                        ></textarea>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button
+                            onclick="sendWhatsApp()"
+                            class="flex-1 btn-primary flex items-center justify-center space-x-2"
+                        >
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Consult via WhatsApp</span>
+                        </button>
+                        <button
+                            onclick="resetForm()"
+                            class="flex-1 btn-secondary"
+                        >
+                            Clear Form
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section id="reviews" class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Customer Reviews</h2>
+            <p class="text-slate-300 max-w-2xl mx-auto">
+                See what our customers say about our service
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="ml-2 text-slate-300 text-sm">5.0</span>
+                </div>
+                <p class="text-white font-medium mb-2">Rahul Kumar</p>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    "Excellent service! Fixed my iPhone 14 Pro screen in under an hour. Quality parts and very professional staff."
+                </p>
+                <p class="text-slate-400 text-xs mt-3">2 days ago</p>
+            </div>
+            
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="ml-2 text-slate-300 text-sm">5.0</span>
+                </div>
+                <p class="text-white font-medium mb-2">Priya Sharma</p>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    "Amazing work on my Samsung Galaxy S23. The display looks brand new and the price was very reasonable. Highly recommend!"
+                </p>
+                <p class="text-slate-400 text-xs mt-3">1 week ago</p>
+            </div>
+            
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="ml-2 text-slate-300 text-sm">5.0</span>
+                </div>
+                <p class="text-white font-medium mb-2">Arjun Menon</p>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    "Fast and reliable service. Fixed my iPad Pro display perfectly. The warranty gives me peace of mind. Great job!"
+                </p>
+                <p class="text-slate-400 text-xs mt-3">2 weeks ago</p>
+            </div>
+        </div>
+        
+        <div class="text-center mt-8">
+            <a
+                href="https://maps.app.goo.gl/q2Eo8in3goKE64327"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center btn-primary"
+            >
+                <i class="fas fa-star mr-2"></i>
+                View All Reviews on Google Maps
+            </a>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose-us" class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Why Choose Irefurb</h2>
+            <p class="text-slate-300 max-w-2xl mx-auto">
+                We're committed to providing the best repair experience for your valuable devices
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="glass-effect rounded-xl p-8 hover:bg-white/10 transition-all">
+                <div class="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6">
+                    <i class="fas fa-shield-alt text-emerald-400 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold text-white mb-4">Quality Parts</h3>
+                <p class="text-slate-300 leading-relaxed">
+                    We use only premium OEM-grade parts for all repairs. Every component is tested for reliability and comes with our quality guarantee. Your device deserves the best.
+                </p>
+                <ul class="mt-4 space-y-2 text-slate-300">
+                    <li class="flex items-center">
+                        <div class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
+                        OEM-grade replacement parts
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
+                        Thorough quality testing
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="glass-effect rounded-xl p-8 hover:bg-white/10 transition-all">
+                <div class="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6">
+                    <i class="fas fa-clock text-emerald-400 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold text-white mb-4">Express Service</h3>
+                <p class="text-slate-300 leading-relaxed">
+                    Most repairs completed while you wait. We understand you need your device back quickly, so we prioritize efficiency without compromising quality.
+                </p>
+                <ul class="mt-4 space-y-2 text-slate-300">
+                    <li class="flex items-center">
+                        <div class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
+                        Same-day service available
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
+                        Average repair time: 30-90 minutes
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container mx-auto px-4 py-16">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Get in Touch</h2>
+                <p class="text-slate-300">
+                    Ready to fix your device? Contact us today for expert service
+                </p>
+            </div>
+            
+            <div class="glass-effect rounded-2xl p-8">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="flex items-center mb-6">
+                            <i class="fab fa-whatsapp text-emerald-400 text-xl mr-4"></i>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">WhatsApp Support</h3>
+                                <p class="text-slate-300">Fast response time</p>
+                            </div>
+                        </div>
+                        <a
+                            href="https://wa.me/918122334434"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center btn-primary mb-4"
+                        >
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Chat on WhatsApp
+                        </a>
+                        
+                        <!-- Social Media Links -->
+                        <div class="flex space-x-4">
+                            <a
+                                href="https://www.instagram.com/irefurbchennai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-slate-400 hover:text-pink-500 transition-colors"
+                                title="Follow us on Instagram"
+                            >
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a
+                                href="https://www.facebook.com/share/1HDW9WzTRp/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-slate-400 hover:text-blue-500 transition-colors"
+                                title="Follow us on Facebook"
+                            >
+                                <i class="fab fa-facebook text-xl"></i>
+                            </a>
+                            <a
+                                href="https://www.youtube.com/@irefurb.chennai"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-slate-400 hover:text-red-500 transition-colors"
+                                title="Subscribe on YouTube"
+                            >
+                                <i class="fab fa-youtube text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex items-center mb-6">
+                            <i class="fas fa-mobile-alt text-emerald-400 text-xl mr-4"></i>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">Visit Our Shop</h3>
+                                <p class="text-slate-300">In-person diagnostics</p>
+                            </div>
+                        </div>
+                        <div class="text-slate-300">
+                            <p class="font-semibold text-white mb-2">Irefurb Chennai</p>
+                            <p>2nd floor, SSR Mall, Wallers Rd</p>
+                            <p>Mount Road, Chintadripet</p>
+                            <p>Chennai, Tamil Nadu 600002</p>
+                            <div class="mt-3 pt-3 border-t border-slate-700">
+                                <p class="text-sm"><strong>Hours:</strong> Mon-Sat 10AM-8PM, Sun 11AM-6PM</p>
+                            </div>
+                            
+                            <!-- Map Link -->
+                            <a
+                                href="https://maps.app.goo.gl/q2Eo8in3goKE64327"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center text-emerald-400 hover:text-emerald-300 transition-colors mt-4"
+                            >
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                Get Directions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <img 
+                        src="Logo.png" 
+                        alt="Irefurb Logo" 
+                        class="h-10 w-auto"
+                        onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')"
+                    />
+                    <div class="hidden">
+                        <i class="fas fa-wrench text-emerald-500 text-lg"></i>
+                    </div>
+                    <span class="text-lg font-bold text-white">Irefurb Chennai</span>
+                </div>
+                <p class="text-slate-400 mb-4 text-sm">
+                    Professional smartphone and tablet display repair services
+                </p>
+                <div class="flex justify-center space-x-6 text-sm">
+                    <a href="https://wa.me/918122334434" class="text-slate-400 hover:text-emerald-400 transition-colors">
+                        WhatsApp
+                    </a>
+                    <a href="#repair-form" class="text-slate-400 hover:text-emerald-400 transition-colors">
+                        Repair Form
+                    </a>
+                    <a href="#reviews" class="text-slate-400 hover:text-emerald-400 transition-colors">
+                        Reviews
+                    </a>
+                    <a href="#contact" class="text-slate-400 hover:text-emerald-400 transition-colors">
+                        Contact
+                    </a>
+                </div>
+                <p class="text-slate-500 text-xs mt-6">
+                    © 2024 Irefurb. All rights reserved.
+                </p>
+                <p class="text-slate-600 text-xs mt-2">
+                    Made by Sheshank_Anbazhagan for Irefurb
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let selectedBrand = '';
+        let selectedModel = '';
+        let isBrandDropdownOpen = false;
+        let isModelDropdownOpen = false;
+
+        const brandModels = {
+            'Apple': ['iPhone 13', 'iPhone 13 Pro', 'iPhone 13 Pro Max', 'iPhone 14', 'iPhone 14 Pro', 'iPhone 14 Pro Max', 'iPhone 15', 'iPhone 15 Pro', 'iPhone 15 Pro Max'],
+            'Samsung': ['Galaxy S21', 'Galaxy S21+', 'Galaxy S21 Ultra', 'Galaxy S22', 'Galaxy S22+', 'Galaxy S22 Ultra', 'Galaxy S23', 'Galaxy S23+', 'Galaxy S23 Ultra'],
+            'OnePlus': ['OnePlus 9', 'OnePlus 9 Pro', 'OnePlus 10 Pro', 'OnePlus 11', 'OnePlus 12'],
+            'Google': ['Pixel 6', 'Pixel 6 Pro', 'Pixel 7', 'Pixel 7 Pro', 'Pixel 8', 'Pixel 8 Pro'],
+            'Xiaomi': ['Redmi Note 11', 'Redmi Note 12', 'Xiaomi 12', 'Xiaomi 13', 'POCO X5', 'POCO F5'],
+            'iPad': ['iPad Pro 11"', 'iPad Pro 12.9"', 'iPad Air', 'iPad 9th Gen', 'iPad 10th Gen', 'iPad Mini']
+        };
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleBrandDropdown() {
+            isBrandDropdownOpen = !isBrandDropdownOpen;
+            isModelDropdownOpen = false;
+            updateDropdowns();
+        }
+
+        function toggleModelDropdown() {
+            if (!selectedBrand) return;
+            isModelDropdownOpen = !isModelDropdownOpen;
+            isBrandDropdownOpen = false;
+            updateDropdowns();
+        }
+
+        function updateDropdowns() {
+            const brandDropdown = document.getElementById('brandDropdown');
+            const modelDropdown = document.getElementById('modelDropdown');
+            
+            if (isBrandDropdownOpen) {
+                brandDropdown.classList.remove('hidden');
+            } else {
+                brandDropdown.classList.add('hidden');
+            }
+            
+            if (isModelDropdownOpen) {
+                modelDropdown.classList.remove('hidden');
+            } else {
+                modelDropdown.classList.add('hidden');
+            }
+        }
+
+        function selectBrand(brand) {
+            selectedBrand = brand;
+            selectedModel = '';
+            
+            document.getElementById('selectedBrandText').textContent = brand;
+            document.getElementById('selectedBrandText').classList.remove('text-slate-400');
+            document.getElementById('selectedBrandText').classList.add('text-white');
+            
+            // Enable model dropdown
+            const modelButton = document.getElementById('modelButton');
+            modelButton.disabled = false;
+            modelButton.classList.remove('opacity-50');
+            
+            // Reset model text
+            document.getElementById('selectedModelText').textContent = 'Choose your model';
+            document.getElementById('selectedModelText').classList.add('text-slate-400');
+            document.getElementById('selectedModelText').classList.remove('text-white');
+            
+            // Populate model dropdown
+            const modelDropdown = document.getElementById('modelDropdown');
+            modelDropdown.innerHTML = '';
+            
+            brandModels[brand].forEach(model => {
+                const button = document.createElement('button');
+                button.className = 'w-full px-4 py-3 text-left text-white dropdown-item';
+                button.textContent = model;
+                button.onclick = () => selectModel(model);
+                modelDropdown.appendChild(button);
+            });
+            
+            isBrandDropdownOpen = false;
+            updateDropdowns();
+        }
+
+        function selectModel(model) {
+            selectedModel = model;
+            
+            document.getElementById('selectedModelText').textContent = model;
+            document.getElementById('selectedModelText').classList.remove('text-slate-400');
+            document.getElementById('selectedModelText').classList.add('text-white');
+            
+            isModelDropdownOpen = false;
+            updateDropdowns();
+        }
+
+        function sendWhatsApp() {
+            const issueDescription = document.getElementById('issueDescription').value.trim();
+            
+            if (!selectedBrand || !selectedModel || !issueDescription) {
+                alert('Please fill in all fields before proceeding.');
+                return;
+            }
+            
+            const message = `Hi Irefurb, I have an inquiry for my ${selectedBrand} ${selectedModel}. Issue: ${issueDescription}`;
+            const whatsappUrl = `https://wa.me/918122334434?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function resetForm() {
+            selectedBrand = '';
+            selectedModel = '';
+            
+            document.getElementById('selectedBrandText').textContent = 'Choose your brand';
+            document.getElementById('selectedBrandText').classList.add('text-slate-400');
+            document.getElementById('selectedBrandText').classList.remove('text-white');
+            
+            document.getElementById('selectedModelText').textContent = 'Choose your model';
+            document.getElementById('selectedModelText').classList.add('text-slate-400');
+            document.getElementById('selectedModelText').classList.remove('text-white');
+            
+            document.getElementById('issueDescription').value = '';
+            
+            // Disable model dropdown
+            const modelButton = document.getElementById('modelButton');
+            modelButton.disabled = true;
+            modelButton.classList.add('opacity-50');
+            
+            // Clear model dropdown
+            document.getElementById('modelDropdown').innerHTML = '';
+            
+            isBrandDropdownOpen = false;
+            isModelDropdownOpen = false;
+            updateDropdowns();
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.relative')) {
+                isBrandDropdownOpen = false;
+                isModelDropdownOpen = false;
+                updateDropdowns();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
